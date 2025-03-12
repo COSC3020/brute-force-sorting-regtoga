@@ -21,33 +21,36 @@ function getAllPermutations(arr) {
     return results;
   }
 
-function permutationSort(a) {
-    if (a.length < 2){
-        return a;
+  function permutationSort(a) {
+    if (a.length == 0){
+        return 0;
+    }
+    if (a.length == 1){
+        return 1;
     }
 
     var sorted = false;
     var index = 0;
-    //get all permutations
     var allpermutations = getAllPermutations(a);
 
     while (!sorted){
         var temp = allpermutations[index];
-        //check if its sorted yet...
         sorted = true;
-        for (var i = 1; i < temp.length; i++){
-            if (!(temp[i-1] <= temp[i])){
+        
+        for (let i = 0; i < temp.length - 1; i++){
+            if (!(temp[i] <= temp[i + 1])){
                 sorted = false;
+                break;
+            }
+        }
+
+        if (sorted) {
+            for (let i = 0; i < a.length; i++) {
+                a[i] = temp[i]; // Update `a` to reflect the sorted permutation
             }
         }
 
         index++;
     }
-    console.log(index);
     return index;
 }
-
-//var something = permutationSort([1,0]);
-//console.log(something);
-//var somethingelse = [0, 0];
-//console.log(JSON.stringify(something) === JSON.stringify(somethingelse));
