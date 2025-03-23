@@ -27,6 +27,9 @@ O(n!), its this because it is possible for it to be sorted first try... but the 
 the worst case looks like:
 O(n!) because we had to try every single permutation of the input.
 
+for each permutation I preform an O(n) check to determine if the list is sorted. but because i generate the O(n!) permutations first, and iterate over them with another O(n) pass.
+O(n! * n) = O((n + 1)!) so asymptotically it remains within O(n!).
+
 The complexity would change if it was generated randomly by not having a determined best or worst case. If we got unlucky the worst case for any input that needs to be sorted is the heat death of the universe and the best case is O(1) because it could just become sorted first try.
 
 
